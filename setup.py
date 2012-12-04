@@ -28,5 +28,7 @@ setup(name='wildcard.readonly',
       zip_safe=False,
       install_requires=[
           'setuptools',
-      ]
+      ],
+      extras_require = dict(
+          oldzope=['ZPublisherEventsBackport']),
       )
