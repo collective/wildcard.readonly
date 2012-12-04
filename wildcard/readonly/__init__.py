@@ -1,5 +1,11 @@
 import transaction
 from zope.component import adapter
+try:
+    # Attempt to import ZPublisherEventsBackport to support older zopes
+    # must come before imports from ZPublisher.interfaces
+    import ZPublisherEventsBackport
+except ImportError:
+    pass
 from ZPublisher.interfaces import IPubBeforeCommit
 from ZPublisher.interfaces import IPubAfterTraversal
 import logging
