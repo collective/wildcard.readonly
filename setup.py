@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a2'
+version = '1.0'
 
 setup(name='wildcard.readonly',
       version=version,
@@ -28,6 +28,7 @@ setup(name='wildcard.readonly',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'collective.monkeypatcher'
       ],
       extras_require = dict(
           oldzope=['ZPublisherEventsBackport']),

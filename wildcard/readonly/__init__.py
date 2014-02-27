@@ -30,5 +30,5 @@ def readOnlyIfCommit(event):
         # check if there are any registered objects.
         # If there are, abort the transaction as that
         # means data is about to be committed to the database.
-        logger.info('aborted committing to database %s')
+        logger.info('aborted committing to database')
         transaction.abort()

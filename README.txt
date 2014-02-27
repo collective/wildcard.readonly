@@ -22,21 +22,16 @@ Also make sure to set your zeo client zope.conf `read-only true` setting::
     </zodb_db>
 
 
-To make this work along with buildout, use the wildcard.recipe.insertinto
-recipe::
-
-    [readonly-insertinto]
-    recipe = wildcard.recipe.insertinto
-    client1 = ${client1:location}/etc/zope.conf insert-before "</zeoclient>" "\n\tread-only true\n"
-
-
-Lastly, make sure to disable product installation in your client configuration,
-otherwise you'll get errors on startup::
+To make this work along with buildout, use the `read-only` recipe config option.
+Also, make sure to disable product installation in your client configuration,
+otherwise you'll get errors on startup. Make sure to use
+plone.app.zeoclient >= 4.2.12 as it includes the read-only config option::
 
     [client1]
     recipe = plone.recipe.zope2instance
     ...
-    enable-product-installation off
+    read-only = true
+    enable-product-installation = off
     ...
 
 
@@ -87,4 +82,20 @@ Add this to the zcml-additional option for your client::
     ...
     zcml-additional =
         <include package="wildcard.readonly" file="readonly-conditional.zcml" />
+    ...
+
+
+Handling sending mail
+~~~~~~~~~~~~~~~~~~~~~
+
+Since mail is tied to transaction management, aborting all transactions will
+also prevent sending mail on the site.
+
+Add this to the zcml-additional option for your client::
+
+    [client1]
+    recipe = plone.recipe.zope2instance
+    ...
+    zcml-additional =
+        <include package="wildcard.readonly" file="mail.zcml" />
     ...
