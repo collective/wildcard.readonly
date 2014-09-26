@@ -1,15 +1,25 @@
 Introduction
 ============
 
-This package provides a mechanism to easily have clients set to
-work with readonly.
 
-This is mostly useful for preventing ReadOnlyError from cropping up
+.. image:: https://www.wildcardcorp.com/logo.png
+   :height: 50
+   :width: 382
+   :alt: Original work by wildcardcorp.com
+   :align: right
+   
+   
+
+In specific use cases, this package provides a mechanism to easily have Plone clients set to
+work with readonly mode, which could be adapted to work with Zope clients as well.
+
+This is mostly useful for preventing ReadOnlyError from cropping up 
 from write on read operations for a public read only site.
 
 
 Warning
 -------
+
 
 Also make sure to set your zeo client zope.conf `read-only true` setting::
 
