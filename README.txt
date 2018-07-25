@@ -63,6 +63,21 @@ Add this to the zcml-additional option for your client::
     ...
 
 
+Abort transactions if "X-Doom-Transaction" in Request
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Aborts transaction if "X-Doom-Transaction" in Request header.
+
+Add this to the zcml-additional option for your client::
+
+    [client1]
+    recipe = plone.recipe.zope2instance
+    ...
+    zcml-additional =
+        <include package="wildcard.readonly" file="readonly-request.zcml" />
+    ...
+
+
 Doom all transactions
 ~~~~~~~~~~~~~~~~~~~~~
 
