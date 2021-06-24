@@ -16,11 +16,15 @@ logger = logging.getLogger('hardenedplone')
 def readOnlyAllDoom(event):
     transaction.abort()
 
-
 @adapter(IPubBeforeCommit)
 def readOnlyAll(event):
     transaction.abort()
 
+@adapter(IPubBeforeCommit)
+def readOnlyRequest(event):
+    req = event.request
+    if req.get_header('X-Doom-Transaction'):
+        transaction.abort()
 
 @adapter(IPubBeforeCommit)
 def readOnlyIfCommit(event):
